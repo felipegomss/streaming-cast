@@ -9,9 +9,13 @@ const db = firebaseApp.firestore()
 
 export default {
 	googleAuth: async () => {
-		const provider = new firebase.auth.GoogleAuthProvider()
-		let result = await firebase.auth().signInWithPopup(provider)
-		return (result)
+		try {
+			const provider = new firebase.auth.GoogleAuthProvider()
+			let result = await firebase.auth().signInWithPopup(provider)
+			return (result)
+		} catch (e) {
+			console.log(e);
+		}
 	},
 	faceAuth: async () => {
 		const provider = new firebase.auth.FacebookAuthProvider()
